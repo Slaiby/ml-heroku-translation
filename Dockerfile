@@ -15,4 +15,6 @@ COPY . ./
 # Run the web server
 EXPOSE 8000
 ENV PYTHONPATH /classifier
-CMD python3 /classifier/app.py
+
+ENTRYPOINT [ "python", "/classifier/app.py" ]
+# CMD python3 /classifier/app.py
