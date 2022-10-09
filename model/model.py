@@ -26,18 +26,22 @@ class TranslationClassifier:
         logging.info("Model is loaded!")
         
 
-    def predict(self, text: str):
-        inputList = text.split()
-        sentence = [[key for word in inputList for key, val in self.eng_vocab.items()  if val == word ]]
-        sentence = pad_sequences(sentence, maxlen=self.max_eng, padding='post')
-        predictions = self.model.predict(sentence)
-        return ' '.join([self.fr_vocab[np.argmax(x)] for x in predictions[0] if np.argmax(x)>0])
+    # def helo(self, text: str):
+    #     inputList = text.split()
+    #     sentence = [[key for word in inputList for key, val in self.eng_vocab.items()  if val == word ]]
+    #     sentence = pad_sequences(sentence, maxlen=self.max_eng, padding='post')
+    #     predictions = self.model.predict(sentence)
+    #     return (' '.join([self.fr_vocab[np.argmax(x)] for x in predictions[0] if np.argmax(x)>0]))
 
     def testPrint(self, text: str):
         inputList = text.split()
         sentence = [[key for word in inputList for key, val in self.eng_vocab.items()  if val == word ]]
         sentence = pad_sequences(sentence, maxlen=self.max_eng, padding='post')
-        return sentence
+        predictions = self.model.predict(sentence)
+        final_pred = [self.fr_vocab[str(np.argmax(x))] for x in predictions[0] if str(np.argmax(x)) != '0']
+        final_pred_string = " ".join(final_pred)
+        return (final_pred_string)
+
 
 # def final_predictions_model2(sentence):
     
