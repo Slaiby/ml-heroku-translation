@@ -6,7 +6,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 import numpy as np
 import json
-from PIL import Image
 from urllib.request import urlretrieve
 
 import logging
